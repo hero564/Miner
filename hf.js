@@ -81,7 +81,7 @@ function HeroButton(pos_x,pos_y,b_width,b_height,img_in,img_out,when_clicked){
 	this.y=pos_y,
 	this.width=b_width,
 	this.height=b_height,
-	this.img_on=img_on,
+	this.img_on=img_in,
 	this.img_out=img_out,
 	this.mob=false,
 	this.clicked=false,
@@ -96,8 +96,12 @@ function HeroButton(pos_x,pos_y,b_width,b_height,img_in,img_out,when_clicked){
 			this.img_out.draw(this.x,this.y);
 		}
 		if(this.mob && Mouse.isLeftDown()){
-			this.clicked=true;
-			this.click_func();
+			if (!this.clicked){
+				this.clicked=true;
+				this.click_func();
+			}
+		}else{
+			this.clicked=false;
 		}
 	}
 };
